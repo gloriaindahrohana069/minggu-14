@@ -1,0 +1,47 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2023-2024 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "classification score": {
+        "prefix": "sk-args-classification-score",
+        "description": "Classification scoring functions",
+        "body": [
+            "#",
+            "# Classification scoring functions",
+            "#",
+            "# Reference:",
+            "# https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "#",
+            "scorer=${1|explained_variance,max_error,neg_mean_absolute_error,neg_mean_squared_error,neg_root_mean_squared_error,neg_mean_squared_log_error,neg_median_absolute_error,r2,neg_mean_poisson_deviance,neg_mean_gamma_deviance,neg_mean_absolute_percentage_error,d2_absolute_error_score,d2_pinball_score,d2_tweedie_score|}"
+        ]
+    },
+    "clustering score": {
+        "prefix": "sk-args-clustering-score",
+        "description": "Clustering scoring functions",
+        "body": [
+            "#",
+            "# Clustering scoring functions",
+            "#",
+            "# Reference:",
+            "# https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "#",
+            "from sklearn.inspection import partial_dependence",
+            "",
+            "scorer=${1||}",
+        ]
+    },
+    "regression score": {
+        "prefix": "sk-args-regression-score",
+        "description": "Regression scoring functions",
+        "body": [
+            "#",
+            "# Regression scoring functions",
+            "#",
+            "# Reference:",
+            "# https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "#",
+            "scorer=${1|explained_variance,max_error,neg_mean_absolute_error,neg_mean_squared_error,neg_root_mean_squared_error,neg_mean_squared_log_error,neg_median_absolute_error,r2,neg_mean_poisson_deviance,neg_mean_gamma_deviance,neg_mean_absolute_percentage_error,d2_absolute_error_score,d2_pinball_score,d2_tweedie_score|}"
+        ]
+    }
+ }

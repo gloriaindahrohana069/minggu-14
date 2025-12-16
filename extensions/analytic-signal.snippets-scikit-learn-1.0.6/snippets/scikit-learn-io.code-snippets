@@ -1,0 +1,85 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "read pickle": {
+        "prefix": "sk-io-pickle-read",
+        "description": "Read a serialized model from a (.pickle) format file and print type and parameter values of new object",
+        "body": [
+            "#",
+            "# read a serialized model from a (.pickle) format file and print type and parameter values of new object:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/model_persistence.html",
+            "# https://docs.python.org/3/library/pickle.html",
+            "#",
+            "with open(file='${1:file.pickle}',mode='rb') as file:",
+            "   ${2:estimator} = pickle.load(file)",
+            "   print(f'Model type: {type($2)}')",
+            "   print($2.get_params())",
+            "$0"
+        ]
+    },
+    "write pickle": {
+        "prefix": "sk-io-pickle-write",
+        "description": "Write or serialize a model to a (.pickle) format file",
+        "body": [
+            "#",
+            "# write or serialize a model to a (.pickle) format file:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/model_persistence.html",
+            "# https://docs.python.org/3/library/pickle.html",
+            "#",
+            "with open(file='${1:file.pickle}',mode='wb') as file:",
+            "   pickle.dump(file=file,obj=${2:estimator})",
+            "$0"
+        ]
+    },
+    "read skops": {
+        "prefix": "sk-io-skops-read",
+        "description": "Read a serialized model from a (.skops) format file and print type and parameter values of new object",
+        "body": [
+            "#",
+            "# read a serialized model from a (.skops) format file and print type and parameter values of new object:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/model_persistence.html",
+            "# https://skops.readthedocs.io/en/latest/modules/classes.html#skops.io.load",
+            "#",
+            "import os",
+            "from skops.io import load",
+            "try:",
+            "    if os.path.exists('${2:file.skops}'):",
+            "        ${1:estimator} = load(file='${2:file.skops}')",
+            "        print(f'Model type: {type($1)}')",
+            "        print($1.get_params())",
+            "    else:",
+            "        print(f\"Error: File '${2:file.skops}' not found.\")",
+            "except Exception as e:",
+            "    print(f\"Error loading model: {str(e)}\")",
+            "$0"
+        ]
+    },
+    "write skops": {
+        "prefix": "sk-io-skops-write",
+        "description": "Write or serialize a model to a (.skops) format file",
+        "body": [
+            "#",
+            "# write or serialize a model to a (.skops) format file:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/model_persistence.html",
+            "# https://skops.readthedocs.io/en/latest/modules/classes.html#skops.io.dump",
+            "#",
+            "from skops.io import dump",
+            "try:",
+            "    dump(obj=${1:estimator}, file='${2:file.skops}')",
+            "    print(f\"Model successfully saved to '${2:file.skops}'\")",
+            "except Exception as e:",
+            "    print(f\"Error saving model: {str(e)}\")",
+            "$0"
+        ]
+    },
+ }

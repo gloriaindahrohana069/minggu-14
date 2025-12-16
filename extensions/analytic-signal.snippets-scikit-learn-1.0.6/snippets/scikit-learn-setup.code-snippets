@@ -1,0 +1,22 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "setup sklearn": {
+        "prefix": "sk-setup",
+        "description": "Import pandas, numpy, json, pickle, plotly.express and plotly.io modules and set default figure renderer and template",
+        "body": [
+            "import json",
+            "import pickle",
+            "import pandas as pd",
+            "import numpy as np",
+            "import plotly.express as px",
+            "import plotly.io as pio",
+            "",
+            "pio.renderers.default = '${1|vscode,notebook,browser,plotly_mimetype,jupyterlab,nteract,notebook_connected,kaggle,azure,colab,cocalc,databricks,json,png,jpeg,jpg,svg,pdf,firefox,chrome,chromium,iframe,iframe_connected,sphinx_gallery,sphinx_gallery_png|}'",
+            "pio.templates.default = '${2|plotly,plotly_white,plotly_dark,ggplot2,seaborn,simple_white,presentation,xgridoff,ygridoff,gridon,none|}'",
+            "$0"
+        ]
+    }
+}

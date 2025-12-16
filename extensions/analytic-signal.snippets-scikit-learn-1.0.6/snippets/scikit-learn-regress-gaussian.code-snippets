@@ -1,0 +1,91 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+{
+    "gaussian process regression": {
+        "prefix": "sk-regress-gaussian-process",
+        "description": "Create and fit GaussianProcessRegressor model",
+        "body": [
+            "#",
+            "# create and fit GaussianProcessRegressor model:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html",
+            "# ",
+            "from sklearn.gaussian_process import GaussianProcessRegressor",
+            "",
+            "${1:estimator_gp} = GaussianProcessRegressor(",
+            "    kernel=${2:None},",
+            "    alpha=${3:1e-10},",
+            "    optimizer='${4:fmin_l_bfgs_b}',",
+            "    n_restarts_optimizer=${5:0},",
+            "    random_state=${6:${RANDOM}},",
+            ")",
+            "$1.fit(X=${7:X}, y=${8:y})",
+            "$0"
+        ]
+    },
+    "gaussian process regression with custom kernel": {
+        "prefix": "sk-regress-gaussian-process-kernel",
+        "description": "Create and fit GaussianProcessRegressor with custom kernel",
+        "body": [
+            "#",
+            "# create and fit GaussianProcessRegressor with custom kernel:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html",
+            "# https://scikit-learn.org/stable/modules/gaussian_process.html#kernels-for-gaussian-processes",
+            "# ",
+            "from sklearn.gaussian_process import GaussianProcessRegressor",
+            "from sklearn.gaussian_process.kernels import RBF, ConstantKernel, WhiteKernel",
+            "",
+            "#",
+            "# create custom kernel (e.g., Constant * RBF + WhiteKernel):",
+            "#",
+            "kernel = ConstantKernel(constant_value=1.0) * RBF(length_scale=1.0) + WhiteKernel(noise_level=1e-5)",
+            "",
+            "${1:estimator_gp_kernel} = GaussianProcessRegressor(",
+            "    kernel=kernel,",
+            "    alpha=${2:1e-10},",
+            "    optimizer='${3:fmin_l_bfgs_b}',",
+            "    n_restarts_optimizer=${4:0},",
+            "    random_state=${5:${RANDOM}},",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    },
+    "gaussian process regression with transformed target": {
+        "prefix": "sk-regress-gaussian-transform-target",
+        "description": "Create and fit GaussianProcessRegressor with QuantileTransformer model wrapped in a TransformedTargetRegressor",
+        "body": [
+            "#",
+            "# create and fit GaussianProcessRegressor with QuantileTransformer model wrapped in a TransformedTargetRegressor:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html",
+            "#",
+            "from sklearn.gaussian_process import GaussianProcessRegressor",
+            "from sklearn.preprocessing import QuantileTransformer",
+            "from sklearn.compose import TransformedTargetRegressor",
+            "",
+            "${1:estimator_gp_transform_target} = TransformedTargetRegressor(",
+            "    regressor = GaussianProcessRegressor(",
+            "        kernel=${2:None},",
+            "        alpha=${3:1e-10},",
+            "        optimizer='${4:fmin_l_bfgs_b}',",
+            "        n_restarts_optimizer=${5:0},",
+            "        random_state=${6:${RANDOM}},",
+            "    ),",
+            "    transformer = QuantileTransformer(",
+            "        output_distribution='normal',",
+            "    )",
+            ")",
+            "$1.fit(X=${7:X}, y=${8:y})",
+            "$0"
+        ]
+    }
+}

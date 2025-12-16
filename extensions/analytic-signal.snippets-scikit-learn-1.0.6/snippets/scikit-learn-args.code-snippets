@@ -1,0 +1,48 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "random state": {
+        "prefix": "sk-args-random_state",
+        "description": "Set random_state argument (seed number) for reproducibility in randomized algorithms.",
+        "body": [
+            "random_state=${1:${RANDOM}}"
+        ]
+    },
+    "alphas": {
+        "prefix": "sk-args-alphas",
+        "description": "Set `alphas` argument (logarithmic or linear sequence of regularization parameters) for cross-validation in RidgeCV, LassoCV, and ElasticNetCV regression.",
+        "body": [
+            "alphas=${1|np.logspace,np.linspace|}(start=${2:-5},stop=${3:5},num=${4:11})"
+        ]
+    },
+    "feature transform": {
+        "prefix": "sk-args-func",
+        "description": "Set FunctionTransformer func argument from a list of common feature (X) transformations",
+        "body": [
+            "func=${1|np.reciprocal,np.sqrt,np.cbrt,np.square,np.exp,np.expm1,np.exp2,np.log,np.log10,np.log2,np.log1p,np.sin,np.cos,np.tan,np.arcsin,np.arccos,np.arctan|}",
+        ]
+    },
+    "target transform": {
+        "prefix": "sk-args-func-inverse",
+        "description": "Set FunctionTransformer func and inverse_func arguments from a list of common target (y) transformations",
+        "body": [
+            "${1|func=np.reciprocal\\,inverse_func=np.reciprocal,func=np.sqrt\\,inverse_func=np.square,func=np.cbrt\\,inverse_func=lambda x: np.power(x\\,3),func=np.square\\,inverse_func=np.sqrt,func=lambda x: np.power(x\\,3)\\,inverse_func=np.cbrt,func=np.exp\\,inverse_func=np.log,func=np.log\\,inverse_func=np.exp,func=np.expm1\\,inverse_func=np.log1p,func=np.log1p\\,inverse_func=np.expm1,func=np.exp2\\,inverse_func=np.log2,func=np.log2\\,inverse_func=np.exp2,func=np.log10\\,inverse_func=lambda x: np.power(10\\,x),func=np.sin\\,inverse_func=np.asin,func=np.cos\\,inverse_func=np.acos,func=np.tan\\,inverse_func=np.atan,func=np.arcsin\\,inverse_func=np.sin,func=np.arccos\\,inverse_func=np.cos,func=np.arctan\\,inverse_func=np.tan|}"
+        ]
+    },
+    "spline extrapolation": {
+        "prefix": "sk-args-spline-extrapolation",
+        "description": "Set SplineTransformer extrapolation behavior beyond the minimum and maximum of the training data.",
+        "body": [
+            "extrapolation='${1|constant,error,linear,continue,periodic|}'",
+        ]
+    },
+    "kernel type": {
+        "prefix": "sk-args-kernel",
+        "description": "Set `kernel` argument for KernelDensity from a list of supported kernel types.",
+        "body": [
+            "kernel='${1|gaussian,tophat,epanechnikov,exponential,linear,cosine|}'"
+        ]
+    }
+ }

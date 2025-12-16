@@ -1,0 +1,118 @@
+{
+	"name": "snippets-scikit-learn",
+	"displayName": "Scikit-learn Snippets",
+	"description": "Python code snippets for machine learning using scikit-learn.",
+	"icon": "images/icon.png",
+	"publisher": "analytic-signal",
+	"license": "MIT",
+	"version": "1.0.6",
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"categories": [
+		"Snippets",
+		"Data Science",
+		"Machine Learning",
+		"Other"
+	],
+	"keywords": [
+		"scikit-learn",
+		"python",
+		"data science",
+		"machine learning"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-setup.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-read.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-io.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-prep.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-regress-linear.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-regress-neighbors.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-regress-gaussian.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-regress-ensemble.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-regress-helper.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-classify-linear.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-classify-neighbors.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-classify-bayes.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-classify-ensemble.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-classify-helper.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-cluster.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-density.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-embed.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-anomaly.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-inspect.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/scikit-learn-args.code-snippets"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1765110726332,
+		"targetPlatform": "undefined",
+		"size": 280294
+	}
+}

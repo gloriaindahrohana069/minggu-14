@@ -1,0 +1,42 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "csv": {
+        "prefix": "sk-read-csv",
+        "description": "Read (.csv) file into pandas data frame and report info",
+        "body": [
+            "${1:df} = pd.read_csv('${2:file.csv}')",
+            "$1.info()",
+            "$0"
+        ]
+    },
+    "excel": {
+        "prefix": "sk-read-excel",
+        "description": "Read (.xlsx) file into pandas data frame and report info",
+        "body": [
+            "${1:df} = pd.read_excel('${2:file.xlsx}')",
+            "$1.info()",
+            "$0"
+        ]
+    },
+    "feather": {
+        "prefix": "sk-read-feather",
+        "description": "Read (.feather) file into pandas data frame and report info",
+        "body": [
+            "${1:df} = pd.read_feather('${2:file.feather}')",
+            "$1.info()",
+            "$0"
+        ]
+    },
+    "parquet": {
+        "prefix": "sk-read-parquet",
+        "description": "Read (.parquet) file into pandas data frame and report info",
+        "body": [
+            "${1:df} = pd.read_parquet('${2:file.parquet}')",
+            "$1.info()",
+            "$0"
+        ]
+    }
+ }

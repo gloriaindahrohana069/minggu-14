@@ -1,0 +1,113 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+{
+    "gaussian naive bayes": {
+        "prefix": "sk-classify-bayes-gaussian",
+        "description": "Create and fit GaussianNB model",
+        "body": [
+            "#",
+            "# create and fit GaussianNB model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html",
+            "#",
+            "from sklearn.naive_bayes import GaussianNB",
+            "",
+            "${1:estimator_gaussian_nb} = GaussianNB(",
+            "   priors=${2:None},",
+            "   var_smoothing=${3:1e-9}",
+            ")",
+            "$1.fit(X=${4:X}, y=${5:y})",
+            "$0"
+        ]
+    },
+    "multinomial naive bayes": {
+        "prefix": "sk-classify-bayes-multinomial",
+        "description": "Create and fit MultinomialNB model (non-negative features, e.g., counts/tf-idf)",
+        "body": [
+            "#",
+            "# create and fit MultinomialNB model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html",
+            "#",
+            "from sklearn.naive_bayes import MultinomialNB",
+            "",
+            "${1:estimator_multinomial_nb} = MultinomialNB(",
+            "   alpha=${2:1.0},",
+            "   fit_prior=${3|True,False|},",
+            "   class_prior=${4:None}",
+            ")",
+            "$1.fit(X=${5:X}, y=${6:y})",
+            "$0"
+        ]
+    },
+    "bernoulli naive bayes": {
+        "prefix": "sk-classify-bayes-bernoulli",
+        "description": "Create and fit BernoulliNB model (binary features; use binarize or a Binarizer)",
+        "body": [
+            "#",
+            "# create and fit BernoulliNB model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html",
+            "#",
+            "from sklearn.naive_bayes import BernoulliNB",
+            "",
+            "${1:estimator_bernoulli_nb} = BernoulliNB(",
+            "   alpha=${2:1.0},",
+            "   binarize=${3:None},",
+            "   fit_prior=${4|True,False|},",
+            "   class_prior=${5:None}",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    },
+    "complement naive bayes": {
+        "prefix": "sk-classify-bayes-complement",
+        "description": "Create and fit ComplementNB model (robust for imbalanced text; non-negative features)",
+        "body": [
+            "#",
+            "# create and fit ComplementNB model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.ComplementNB.html",
+            "#",
+            "from sklearn.naive_bayes import ComplementNB",
+            "",
+            "${1:estimator_complement_nb} = ComplementNB(",
+            "   alpha=${2:1.0},",
+            "   fit_prior=${3|True,False|},",
+            "   class_prior=${4:None},",
+            "   norm=${5|False,True|}",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    },
+    "categorical naive bayes": {
+        "prefix": "sk-classify-bayes-categorical",
+        "description": "Create and fit CategoricalNB model (integer-encoded categorical features)",
+        "body": [
+            "#",
+            "# create and fit CategoricalNB model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.CategoricalNB.html",
+            "#",
+            "from sklearn.naive_bayes import CategoricalNB",
+            "",
+            "${1:estimator_categorical_nb} = CategoricalNB(",
+            "   alpha=${2:1.0},",
+            "   fit_prior=${3|True,False|},",
+            "   class_prior=${4:None},",
+            "   min_categories=${5:None}",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    }
+}

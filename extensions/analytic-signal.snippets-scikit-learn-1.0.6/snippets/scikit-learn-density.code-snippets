@@ -1,0 +1,108 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "kernel density estimation": {
+        "prefix": "sk-density-kernel",
+        "description": "Create and fit KernelDensity model",
+        "body": [
+            "#",
+            "# create and fit KernelDensity model:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html",
+            "#",
+            "from sklearn.pipeline import make_pipeline",
+            "from sklearn.preprocessing import StandardScaler",
+            "from sklearn.neighbors import KernelDensity",
+            "",
+            "${1:estimator_kernel_density} = make_pipeline(",
+            "   StandardScaler(),",
+            "   KernelDensity(",
+            "       bandwidth=${2:1.0},",
+            "       kernel='${3|gaussian,tophat,epanechnikov,exponential,linear,cosine|}',",
+            "       metric='${4|euclidean,manhattan,haversine,cosine|}',",
+            "   )",
+            ")",
+            "$1.fit(X=${5:X})",
+            "$0"
+        ]
+    },
+    "gaussian mixture model": {
+        "prefix": "sk-density-gaussian-mixture",
+        "description": "Create and fit Gaussian Mixture Model",
+        "body": [
+            "#",
+            "# create and fit GaussianMixture model:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html",
+            "#",
+            "from sklearn.mixture import GaussianMixture",
+            "",
+            "${1:estimator_gaussian_mixture} = GaussianMixture(",
+            "    n_components=${2:1},",
+            "    covariance_type='${3|full,tied,diag,spherical|}',",
+            "    init_params='${4|kmeans,k-means++,random,random_from_data|}',",
+            "    random_state=${5:${RANDOM}},",
+            "    max_iter=${6:100}",
+            ")",
+            "$1.fit(X=${7:X})",
+            "$0"
+        ]
+    },
+    "kernel density model sampling": {
+        "prefix": "sk-density-sample-kernel",
+        "description": "Sample from a fitted KernelDensity model",
+        "body": [
+            "#",
+            "# draw samples at random from a KernelDensity model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity.sample",
+            "#",
+            "$1_samples = ${1:estimator}.sample(n_samples=${2:1}, random_state=${3:${RANDOM}})",
+            "$0"
+        ]
+    },
+    "gaussian mixture model sampling": {
+        "prefix": "sk-density-sample-gaussian-mixture",
+        "description": "Sample from a fitted GaussianMixture model",
+        "body": [
+            "#",
+            "# draw samples at random from a GaussianMixture model:",
+            "#",
+            "# referemce:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html#sklearn.mixture.GaussianMixture.sample",
+            "#",
+            "$1_samples, $1_components = ${1:estimator}.sample(n_samples=${2:1})",
+            "$0"
+        ]
+    },
+    "density log-likelihood samples": {
+        "prefix": "sk-density-score-samples",
+        "description": "Compute log-likelihood of samples under the density model",
+        "body": [
+            "#",
+            "# compute log-likelihood of each sample under a density estimation model:",
+            "#",
+            "$2_$1_density = ${1:estimator}.score_samples(X=${2:X})",
+            "$0"
+        ]
+    },
+    "density total log-likelihood": {
+        "prefix": "sk-density-score",
+        "description": "Compute total log-likelihood of all samples under the density model",
+        "body": [
+            "#",
+            "# compute total log-likelihood of all samples under a density estimation model:",
+            "#",
+            "log_prob = ${1:estimator}.score(X=${2:X})",
+            "print(f'total log-likelihood: {log_prob}')",
+            "$0"
+        ]
+    }
+ }

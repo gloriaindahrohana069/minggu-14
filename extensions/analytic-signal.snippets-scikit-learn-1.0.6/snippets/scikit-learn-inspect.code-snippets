@@ -1,0 +1,58 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "partial dependence": {
+        "prefix": "sk-inspect-partial_dependence",
+        "description": "Compute partial dependence - the average response of an estimator for each possible value of the feature(s)",
+        "body": [
+            "#",
+            "# compute partial dependence to explain model responses as a function of feature variations",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.inspection.partial_dependence.html",
+            "#",
+            "from sklearn.inspection import partial_dependence",
+            "",
+            "$1_partial = partial_dependence(",
+            "   estimator=${1:estimator},",
+            "   X=${2:X},",
+            "   features=[${3:0}],",
+            "   percentiles=${4:(0.05,0.95)},",
+            "   grid_resolution=${5:100},",
+            "   kind='${6|average,individual,both|}'",
+            ")",
+            "",
+            "$1_partial",
+            "$0"
+        ]
+    },
+    "permutation importance": {
+        "prefix": "sk-inspect-permutation_importance",
+        "description": "Compute permutation importance for feature evaluation",
+        "body": [
+            "#",
+            "# compute permutation importance to evaluate feature importance",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html",
+            "#",
+            "from sklearn.inspection import permutation_importance",
+            "",
+            "$1_permutation = permutation_importance(",
+            "   estimator=${1:estimator},",
+            "   X=${2:X},",
+            "   y=${3:y},",
+            "   scoring=${4:None},",
+            "   n_repeats=${5:5},",
+            "   random_state=${6:${RANDOM}},",
+            "   sample_weight=${7:None},",
+            "   max_samples=${8:1.0}",
+            ")",
+            "",
+            "$1_permutation",
+            "$0"
+        ]
+    }
+}

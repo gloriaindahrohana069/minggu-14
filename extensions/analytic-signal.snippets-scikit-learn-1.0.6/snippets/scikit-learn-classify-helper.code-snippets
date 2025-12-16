@@ -1,0 +1,50 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "dummy classifier": {
+        "prefix": "sk-classify-dummy",
+        "description": "Create and fit DummyClassifier model",
+        "body": [
+            "#",
+            "# create and fit DummyClassifier model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html",
+            "#",
+            "from sklearn.dummy import DummyClassifier",
+            "",
+            "${1:estimator_dummy} = DummyClassifier(",
+            "   strategy='${2|prior,most_frequent,stratified,uniform,constant|}',",
+            "   random_state=${3:${RANDOM}},",
+            "   constant=${4:None}",
+            ")",
+            "$1.fit(X=${5:X},y=${6:y})",
+            "$0"
+        ]
+    },
+    "report classification metrics": {
+        "prefix": "sk-classify-report",
+        "description": "Classification report and evaluation metrics",
+        "body": [
+            "#",
+            "# classification report and evaulation metrics:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html",
+            "#",
+            "from sklearn.metrics import classification_report, confusion_matrix",
+            "",
+            "${1:y_pred} = ${2:estimator}.predict(${3:X})",
+            "",
+            "print('classification report:')",
+            "print(classification_report(y_true=${4:y_true}, y_pred=$1))",
+            "",
+            "print('confusion matrix:')",
+            "print(confusion_matrix(y_true=$4, y_pred=$1))",
+            "$0"
+        ]
+    }
+ }

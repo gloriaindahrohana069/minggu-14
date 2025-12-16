@@ -1,0 +1,97 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "k-nearest neighbors classifier": {
+        "prefix": "sk-classify-neighbors-k",
+        "description": "Create and fit KNeighborsClassifier model",
+        "body": [
+            "#",
+            "# create and fit KNeighborsClassifier model:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html",
+            "#",
+            "from sklearn.pipeline import make_pipeline",
+            "from sklearn.preprocessing import StandardScaler",
+            "from sklearn.neighbors import KNeighborsClassifier",
+            "",
+            "${1:estimator_knn} = make_pipeline(",
+            "    StandardScaler(),",
+            "    KNeighborsClassifier(",
+                "    n_neighbors=${2:5},",
+                "    weights='${3|uniform,distance|}',",
+                "    algorithm='${4|auto,ball_tree,kd_tree,brute|}',",
+                "    leaf_size=${5:30},",
+                "    p=${6:2},",
+                "    metric='${7|minkowski,euclidean,manhattan|}'",
+            "    )",
+            ")",
+            "$1.fit(X=${8:X}, y=${9:y})",
+            "$0"
+        ]
+    },
+    "radius neighbors classifier": {
+        "prefix": "sk-classify-neighbors-radius",
+        "description": "Create and fit RadiusNeighborsClassifier model",
+        "body": [
+            "#",
+            "# create and fit RadiusNeighborsClassifier model:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.RadiusNeighborsClassifier.html",
+            "#",
+            "from sklearn.pipeline import make_pipeline",
+            "from sklearn.preprocessing import StandardScaler",
+            "from sklearn.neighbors import RadiusNeighborsClassifier",
+            "",
+            "${1:estimator_radius} = make_pipeline(",
+            "    StandardScaler(),",
+            "    RadiusNeighborsClassifier(",
+                "    radius=${2:1.0},",
+                "    weights='${3|uniform,distance|}',",
+                "    algorithm='${4|auto,ball_tree,kd_tree,brute|}',",
+                "    leaf_size=${5:30},",
+                "    p=${6:2},",
+                "    metric='${7|minkowski,euclidean,manhattan|}',",
+                "    outlier_label=${8:None}",
+            "    )",
+            ")",
+            "$1.fit(X=${9:X}, y=${10:y})",
+            "$0"
+        ]
+    },
+    "nearest centroid classifier": {
+        "prefix": "sk-classify-neighbors-centroid",
+        "description": "Create and fit NearestCentroid model",
+        "body": [
+            "#",
+            "# create and fit NearestCentroid model:",
+            "#",
+            "# references:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestCentroid.html",
+            "#",
+            "from sklearn.pipeline import make_pipeline",
+            "from sklearn.preprocessing import StandardScaler",
+            "from sklearn.neighbors import NearestCentroid",
+            "",
+            "${1:estimator_centroid} = make_pipeline(",
+            "    StandardScaler(),",
+            "    NearestCentroid(",
+            "        metric='${2|euclidean,manhattan|}',",
+            "        shrink_threshold=${3:None},",
+            "        priors='${4|uniform,empirical|}'",
+            "    )",
+            ")",
+            "$1.fit(X=${5:X}, y=${6:y})",
+            "$0"
+        ]
+    }
+ }

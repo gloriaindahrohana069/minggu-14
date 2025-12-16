@@ -1,0 +1,166 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) 2024-2025 Analytic Signal Limited. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ {
+    "linear discriminant analysis": {
+        "prefix": "sk-classify-linear-lda",
+        "description": "Create and fit LinearDiscriminantAnalysis (LDA) model",
+        "body": [
+            "#",
+            "# create and fit LinearDiscriminantAnalysis (LDA) model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html",
+            "#",
+            "from sklearn.discriminant_analysis import LinearDiscriminantAnalysis",
+            "",
+            "${1:estimator_lda} = LinearDiscriminantAnalysis(",
+            "   solver='${2|svd,lsqr,eigen|}',",
+            "   shrinkage=${3:None},",
+            "   n_components=${4:None},",
+            "   store_covariance=${5|False,True|}",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    },
+    "quadratic discriminant analysis": {
+        "prefix": "sk-classify-linear-qda",
+        "description": "Create and fit QuadraticDiscriminantAnalysis (QDA) model",
+        "body": [
+            "#",
+            "# create and fit QuadraticDiscriminantAnalysis (QDA) model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html",
+            "#",
+            "from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis",
+            "",
+            "${1:estimator_qda} = QuadraticDiscriminantAnalysis(",
+            "   priors=${2:None},",
+            "   reg_param=${3:0.0},",
+            "   store_covariance=${4|False,True|}",
+            ")",
+            "$1.fit(X=${5:X}, y=${6:y})",
+            "$0"
+        ]
+    },
+    "logistic regression": {
+        "prefix": "sk-classify-linear-logistic",
+        "description": "Create and fit LogisticRegression model",
+        "body": [
+            "#",
+            "# create and fit LogisticRegression model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html",
+            "#",
+            "from sklearn.linear_model import LogisticRegression",
+            "",
+            "${1:estimator_logistic} = LogisticRegression(",
+            "   C=${2:1.0},",
+            "   penalty='${3|l2,l1,elasticnet,none|}',",
+            "   solver='${4|lbfgs,liblinear,newton-cg,newton-cholesky,sag,saga|}',",
+            "   multi_class='${5|auto,ovr,multinomial|}',",
+            "   max_iter=${6:1000},",
+            "   random_state=${7:${RANDOM}}",
+            ")",
+            "$1.fit(X=${8:X}, y=${9:y})",
+            "$0"
+        ]
+    },
+    "linear support vector machine": {
+        "prefix": "sk-classify-linear-svm",
+        "description": "Create and fit LinearSVC model",
+        "body": [
+            "#",
+            "# create and fit LinearSVC model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html",
+            "#",
+            "from sklearn.svm import LinearSVC",
+            "",
+            "${1:estimator_svm} = LinearSVC(",
+            "   C=${2:1.0},",
+            "   penalty='${3|l2,l1|}',",
+            "   loss='${4|squared_hinge,hinge|}',",
+            "   dual=${5|'auto',False,True|},",
+            "   max_iter=${6:1000},",
+            "   random_state=${7:${RANDOM}}",
+            ")",
+            "$1.fit(X=${8:X}, y=${9:y})",
+            "$0"
+        ]
+    },
+    "sgd classifier": {
+        "prefix": "sk-classify-linear-svm-sgd",
+        "description": "Create and fit SGDClassifier model (suitable for large datasets)",
+        "body": [
+            "#",
+            "# create and fit SGDClassifier model (suitable for large datasets):",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html",
+            "#",
+            "from sklearn.linear_model import SGDClassifier",
+            "",
+            "${1:estimator_sgd} = SGDClassifier(",
+            "   loss='${2|log_loss,hinge,modified_huber,squared_hinge,perceptron|}',",
+            "   penalty='${3|l2,l1,elasticnet|}',",
+            "   alpha=${4:0.0001},",
+            "   learning_rate='${5|optimal,constant,invscaling,adaptive|}',",
+            "   eta0=${6:0.1},",
+            "   max_iter=${7:1000},",
+            "   random_state=${8:${RANDOM}}",
+            ")",
+            "$1.fit(X=${9:X}, y=${10:y})",
+            "$0"
+        ]
+    },
+    "perceptron": {
+        "prefix": "sk-classify-linear-perceptron",
+        "description": "Create and fit Perceptron model",
+        "body": [
+            "#",
+            "# create and fit Perceptron model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html",
+            "#",
+            "from sklearn.linear_model import Perceptron",
+            "",
+            "${1:estimator_perceptron} = Perceptron(",
+            "   penalty='${2|l2,l1,elasticnet|}',",
+            "   alpha=${3:0.0001},",
+            "   max_iter=${4:1000},",
+            "   random_state=${5:${RANDOM}}",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    },
+    "ridge classifier": {
+        "prefix": "sk-classify-linear-ridge",
+        "description": "Create and fit RidgeClassifier model",
+        "body": [
+            "#",
+            "# create and fit RidgeClassifier model:",
+            "#",
+            "# reference:",
+            "# https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html",
+            "#",
+            "from sklearn.linear_model import RidgeClassifier",
+            "",
+            "${1:estimator_ridge} = RidgeClassifier(",
+            "   alpha=${2:1.0},",
+            "   solver='${3|auto,svd,cholesky,lsqr,sparse_cg,sag,saga,lbfgs|}',",
+            "   max_iter=${4:1000},",
+            "   random_state=${5:${RANDOM}}",
+            ")",
+            "$1.fit(X=${6:X}, y=${7:y})",
+            "$0"
+        ]
+    },
+ }
