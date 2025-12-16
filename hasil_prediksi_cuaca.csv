@@ -1,21 +1,3 @@
-Waktu,Suhu (°C),Deskripsi,Icon
-2025-12-10 09:00:00,29.28,moderate rain,<img src='http://openweathermap.org/img/wn/10d.png' width='40'>
-2025-12-10 12:00:00,28.6,moderate rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-10 15:00:00,25.87,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-10 18:00:00,23.9,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-10 21:00:00,23.6,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-11 00:00:00,24.42,overcast clouds,<img src='http://openweathermap.org/img/wn/04d.png' width='40'>
-2025-12-11 03:00:00,28.26,overcast clouds,<img src='http://openweathermap.org/img/wn/04d.png' width='40'>
-2025-12-11 06:00:00,30.11,moderate rain,<img src='http://openweathermap.org/img/wn/10d.png' width='40'>
-2025-12-11 09:00:00,28.72,moderate rain,<img src='http://openweathermap.org/img/wn/10d.png' width='40'>
-2025-12-11 12:00:00,25.17,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-11 15:00:00,23.91,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-11 18:00:00,23.93,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-11 21:00:00,23.75,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-12 00:00:00,24.33,overcast clouds,<img src='http://openweathermap.org/img/wn/04d.png' width='40'>
-2025-12-12 03:00:00,28.5,light rain,<img src='http://openweathermap.org/img/wn/10d.png' width='40'>
-2025-12-12 06:00:00,30.06,light rain,<img src='http://openweathermap.org/img/wn/10d.png' width='40'>
-2025-12-12 09:00:00,28.53,moderate rain,<img src='http://openweathermap.org/img/wn/10d.png' width='40'>
-2025-12-12 12:00:00,24.82,moderate rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-12 15:00:00,24.02,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
-2025-12-12 18:00:00,22.64,light rain,<img src='http://openweathermap.org/img/wn/10n.png' width='40'>
+version https://git-lfs.github.com/spec/v1
+oid sha256:803095c7f3d807387cf6d7d6d7fbbf070abd5cb158b498ed831ca9fb5c878762
+size 2102
